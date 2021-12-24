@@ -8,6 +8,8 @@ services:
       - POSTGRES_USER=kratos
       - POSTGRES_PASSWORD=kratos
       - POSTGRES_DB=kratos
+    volumes:
+      - $PWD/kratos/db:/var/lib/postgresql/data
     networks:
       - intranet
 
@@ -15,7 +17,7 @@ services:
     container_name: kratos-migrate
     image: oryd/kratos:v0.8.0-alpha.3
     environment:
-      - DSN=postgresql://kratos:kratos@kratos-db:5432/kratos?sslmode=disable
+      - DSN=postgresql://kratos:kratos@kratos-postgres:5432/kratos?sslmode=disable
     volumes:
       - type: bind
         source: $PWD/kratos/config
@@ -35,7 +37,8 @@ services:
       - "4433:4433" # public
       - "4434:4434" # admin
     environment:
-      - DSN=postgresql://kratos:kratos@kratos-db:5432/kratos?sslmode=disable
+      - DSN=postgresql://kratos:kratos@kratos-postgres:5432/kratos?sslmode=disable
+      - URI_KRATOS=${URI_KRATOS}
     command: serve -c /etc/config/kratos/kratos.yaml --dev --watch-courier
     restart: unless-stopped
     volumes:
@@ -50,7 +53,7 @@ services:
     image: oryd/kratos-selfservice-ui-node:v0.8.0-alpha.3
     environment:
       - KRATOS_PUBLIC_URL=http://kratos:4433/
-      - KRATOS_BROWSER_URL=http://127.0.0.1:4433/
+      - KRATOS_BROWSER_URL=${URI_KRATOS}:4433/
       - PORT=4455
       - SECURITY_MODE=
     ports:
