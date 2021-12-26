@@ -10,8 +10,6 @@ Berikut adalah fitur fitur yang ada pada ORY dan tersedia di repo ini :
 | [Oathkeeper](#Oathkeeper) | ![Oathkeeper](https://img.shields.io/badge/progress-not%20yet-red) | - |
 | [Keto](#Keto) | ![Keto](https://img.shields.io/badge/progress-not%20yet-red) | - |
 
-### Demo :
-
 ### Tools
 - Docker
 - Docker Compose

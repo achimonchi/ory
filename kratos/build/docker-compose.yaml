@@ -54,7 +54,7 @@ services:
     image: oryd/kratos-selfservice-ui-node:v0.8.0-alpha.3
     environment:
       - KRATOS_PUBLIC_URL=http://kratos:4433/
-      - KRATOS_BROWSER_URL=${URI_KRATOS}:4433/
+      - KRATOS_BROWSER_URL=${URI_KRATOS}
       - PORT=4455
       - SECURITY_MODE=
     ports:
