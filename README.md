@@ -34,11 +34,16 @@ Project ini masih menggunakan UI dari Ory.
     ```bash
     . ./kratos/config/uri.sh <nama host kamu>
     ``` 
+    Untuk **nama host**, itu sampai ke port nya (kalau tanpa domain). Misal : 
+    - http://localhost:4433/
+    - http://127.0.0.1:4433/
+    - http://domainkamu.com/path/backend (kalau menggunakan domain + nginx)
+
+    Jika menggunakan **localhost**, maka file `kratos.yaml` nya juga harus menggunakan **localhost**.
 4. Setelah itu, jalankan kratos dengan docker compose
     ```bash
     make run-kratos-compose
     ```
-
 > Note : \
 > Jika ingin menggunakan **reverse proxy**, maka silahkan cek config nginx pada file *kratos/config/nginx.conf*. Jika kamu punya config yg lebih simple, please let me know ^-^
 
