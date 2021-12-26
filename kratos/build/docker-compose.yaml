@@ -50,6 +50,7 @@ services:
       - kratos
 
   kratos-selfservice-ui-node:
+    container_name: kratos-ui
     image: oryd/kratos-selfservice-ui-node:v0.8.0-alpha.3
     environment:
       - KRATOS_PUBLIC_URL=http://kratos:4433/
@@ -63,6 +64,7 @@ services:
     restart: on-failure
 
   mailslurper:
+    container_name: mailslurper
     image: oryd/mailslurper:latest-smtps
     ports:
       - '4436:4436'
