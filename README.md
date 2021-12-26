@@ -32,12 +32,17 @@ Project ini masih menggunakan UI dari Ory.
     ```
 2. Setelah itu, ubah konfigurasi pada `kratos/config/kratos.yaml`. Ubah `localhost` dengan host yang kamu inginkan.
 
-3. Lalu, ubah juga host pada file `kratos/config/uri.sh`. Ini berguna untuk set env variable `URI_HOST`
-
+3. Lalu, ubah juga host pada file `kratos/config/uri.sh`. Ini berguna untuk set env variable `URI_HOST`. Setelah diubah, jalankan dengan perintah :
+    ```bash
+    . ./kratos/config/uri.sh <nama host kamu>
+    ``` 
 4. Setelah itu, jalankan kratos dengan docker compose
     ```bash
     make run-kratos-compose
     ```
+
+> Note : \
+> Jika ingin menggunakan **reverse proxy**, maka silahkan cek config nginx pada file *kratos/config/nginx.conf*. Jika kamu punya config yg lebih simple, please let me know ^-^
 
 ### Kontak
 Jika ada yang ingin ditanyakan, bisa kontak :
