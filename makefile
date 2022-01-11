@@ -17,4 +17,19 @@ run-kratos-manual:
 	bash kratos/build/kratos.sh ${image_kratos}
 
 
+build-frontend:
+	cd kratos-ui && docker build -t ory-ui:${tag} -f Dockerfile .
+	docker tag ory-ui:${tag} ory-ui:latest
 
+running-frontend:
+	docker run -d --name ory-frontend \
+		-p 127.0.0.1:3001:3000 \
+		ory-ui:latest
+
+remove-frontend:
+	docker rm -f ory-frontend
+
+build-and-run-frontend:
+	make build-frontend tag=${tag}
+	make remove-frontend
+	make running-frontend
