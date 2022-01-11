@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { ButtonPrimary } from "../../components/forms/Button";
 import { InputFields } from "../../components/forms/InputFields";
 import Layout from "../../components/template/Layout";
+import { ENV } from "../../utils/config";
 
 export default function Login(){
     const [email, set_email] = useState("");
@@ -12,7 +13,7 @@ export default function Login(){
     
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        axios.get(`http://localhost:4433/self-service/login/flows?id=${router.query.flow}`,{
+        axios.get(`${ENV.KRATOS_HOST}/self-service/login/flows?id=${router.query.flow}`,{
             withCredentials:true
         }).then((res)=>{
             const csrfToken = res.data.ui.nodes[0].attributes.value;
@@ -22,7 +23,7 @@ export default function Login(){
                 password_identifier:email,
                 csrf_token:csrfToken,
             }
-            axios.post(`http://localhost:4433/self-service/login?flow=${router.query.flow}`, data, {
+            axios.post(`${ENV.KRATOS_HOST}/self-service/login?flow=${router.query.flow}`, data, {
                 withCredentials:true
             }).then((res1)=>{
                 alert("Login Success")
