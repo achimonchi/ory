@@ -23,7 +23,7 @@ function Registration(){
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
-        const url = `http://localhost:4433/self-service/registration/flows?id=${router.query.flow}`
+        const url = `${ENV.KRATOS_HOST}/self-service/registration/flows?id=${router.query.flow}`
 
         axios(`${url}`, {
             withCredentials:true,
@@ -41,7 +41,7 @@ function Registration(){
                 method:"password",
                 csrf_token: csrfToken
             }
-            axios.post(`http://localhost:4433/self-service/registration?flow=${router.query.flow}`, data, {
+            axios.post(`${ENV.KRATOS_HOST}/self-service/registration?flow=${router.query.flow}`, data, {
                 withCredentials:true
             })
             .then((res1)=>{

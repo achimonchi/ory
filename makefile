@@ -18,7 +18,7 @@ run-kratos-manual:
 
 
 build-frontend:
-	cd kratos-ui && docker build -t ory-ui:${tag} -f Dockerfile .
+	cd kratos-ui && docker build -t ory-ui:${tag} -f Dockerfile --build-arg NEXT_PUBLIC_KRATOS_HOST=${NEXT_PUBLIC_KRATOS_HOST} .
 	docker tag ory-ui:${tag} ory-ui:latest
 
 running-frontend:
