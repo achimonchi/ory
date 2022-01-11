@@ -13,16 +13,19 @@ export default function Dashboard(){
     const [session, set_session] = useState("")
     const [profile, set_profile] = useState({})
     const [loading, set_loading] = useState(true);
-    useEffect(async()=>{
-        set_loading(true)
-        const res = await getSession();
-        if(res.flag){
-            set_session(JSON.stringify(res.data, null, 4))
-            set_profile(res.data.identity)
-        } 
-        setTimeout(()=>{
-            set_loading(false)
-        }, 200)
+    useEffect(()=>{
+        async function fetchSession(){
+            set_loading(true)
+            const res = await getSession();
+            if(res.flag){
+                set_session(JSON.stringify(res.data, null, 4))
+                set_profile(res.data.identity)
+            } 
+            setTimeout(()=>{
+                set_loading(false)
+            }, 200)
+        }
+        fetchSession()
     }, [])
 
     if(loading){
