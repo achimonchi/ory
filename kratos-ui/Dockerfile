@@ -6,6 +6,8 @@ WORKDIR /app
 COPY ./package.json .
 RUN npm install
 
+# ENV NEXT_PUBLIC_KRATOS_HOST=http://localhost:3000
+
 COPY . .
 RUN npm run build
 

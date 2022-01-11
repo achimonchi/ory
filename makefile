@@ -24,6 +24,7 @@ build-frontend:
 running-frontend:
 	docker run -d --name ory-frontend \
 		-p 127.0.0.1:3001:3000 \
+		--env NEXT_PUBLIC_KRATOS_HOST=${NEXT_PUBLIC_KRATOS_HOST} \
 		ory-ui:latest
 
 remove-frontend:
