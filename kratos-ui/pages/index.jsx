@@ -17,7 +17,7 @@ export default function Home(props) {
   }
 
   useEffect(()=>{
-    axios.get(`http://localhost:4433/sessions/whoami`, {
+    axios.get(`${ENV.KRATOS_HOST}/sessions/whoami`, {
       withCredentials:true,
     }).then((res)=>{
       set_session(JSON.stringify(res.data, null, 2));
