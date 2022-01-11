@@ -34,3 +34,28 @@ build-and-run-frontend:
 	make build-frontend tag=${tag}
 	make remove-frontend
 	make running-frontend
+
+
+# for oathkeeper
+generate-id-token:
+	docker run oryd/oathkeeper:v0.38.12-beta.1 credentials generate --alg RS256 > oathkeeper/config/jwks.json
+
+build-oathkeeper:
+	cd oathkeeper && docker build -t ory-oathkeeper:${tag} -f Dockerfile .
+	docker tag ory-oathkeeper:${tag} ory-oathkeeper:latest
+
+run-oathkeeper:
+	docker run -d --name oathkeeper \
+		-p 5566:5566 \
+		-p 5565:5565 \
+		ory-oathkeeper:latest \
+		--config ./config.yaml \
+		serve
+
+remove-oathkeeper:
+	docker rm -f oathkeeper
+
+build-and-run-oathkeeper:
+	make build-oathkeeper tag=${tag}
+	make remove-oathkeeper
+	make run-oathkeeper
