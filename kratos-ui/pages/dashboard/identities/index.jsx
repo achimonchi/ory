@@ -7,21 +7,22 @@ export default function Identities(){
     const [identities, set_identities] = useState([])
 
     // useEffect(async()=>{
-        // axios.get(`http://localhost:4433/identities`, {
-        //     withCredentials: true,
-        //     headers:{
-        //         "Access-Control-Allow-Origin" : true
-        //     }
-        // }).then((res)=>{
-        //     set_identities(res.data)
-        // }).catch((err)=>{
-        //     set_identities([])
-        //     console.log({err})
-        // })
+    //     axios.get(`http://localhost:4433/identities`, {
+    //         withCredentials: true,
+    //         headers:{
+    //             "Access-Control-Allow-Origin" : true
+    //         }
+    //     }).then((res)=>{
+    //         console.log({res:res.data})
+    //         set_identities(res.data)
+    //     }).catch((err)=>{
+    //         set_identities([])
+    //         console.log({err})
+    //     })
     // }, [])
 
     return (
-        <conten id="identities" className="grid grid-cols-12 gap-3">
+        <content id="identities" className="grid grid-cols-12 gap-3">
             <div className="col-span-12">
                 <div className="bg-white p-3 rounded-xl">
                     <h1 className="text-lg">Identities</h1>
@@ -75,7 +76,7 @@ export default function Identities(){
                     </div>
                 </div>
             </div>
-        </conten>
+        </content>
     )
 }
 

@@ -99,3 +99,11 @@ export default function Home(props) {
     </Layout>
   )
 }
+
+export function getStaticProps(context){
+  return {
+    props:{
+      name: "Hai"
+    }
+  }
+}
